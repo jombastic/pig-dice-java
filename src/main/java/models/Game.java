@@ -14,22 +14,19 @@ public class Game {
   }
 
   public String getCurrentPlayer() {
-    switch (currentPlayer) {
-      case "Player 1" : {
-        return currentPlayer + "\nscore: " + player1Score +"\nturn score: " + turnScore;
-      }
-      default: {
-        return currentPlayer;
-      }
+    if (currentPlayer.equals("Player 1")) {
+      return currentPlayer + "\nscore: " + player1Score + "\nturn score: " + turnScore;
+    } else {
+      return currentPlayer + "\nscore: " + player2Score + "\nturn score: " + turnScore;
     }
   }
 
-  public void randomDice() {
+  private void randomDice() {
     Random random = new Random();
     rolledDice = random.nextInt((6 - 1) + 1) + 1;
   }
 
-  public void addTurnScore() {
+  private void addTurnScore() {
     if (rolledDice == 1) {
       turnScore = 0;
       playerChange();
@@ -42,17 +39,13 @@ public class Game {
     if (input == 'r') {
       randomDice();
       addTurnScore();
+      System.out.println("Rolled dice: " + rolledDice + "\n");
       return true;
     } else if (input == 'h') {
-      switch (currentPlayer) {
-        case "Player 1" : {
-          player1Score += turnScore;
-          break;
-        }
-        default: {
-          player2Score += turnScore;
-          break;
-        }
+      if (currentPlayer.equals("Player 1")) {
+        player1Score += turnScore;
+      } else {
+        player2Score += turnScore;
       }
       turnScore = 0;
       playerChange();
@@ -61,6 +54,7 @@ public class Game {
       return false;
     }
   }
+
 
   public boolean winner() {
     if (player1Score >= 100) {
@@ -74,7 +68,7 @@ public class Game {
     }
   }
 
-  public void playerChange() {
+  private void playerChange() {
     if (currentPlayer.equals("Player 1")) {
       currentPlayer = "Player 2";
     } else {
