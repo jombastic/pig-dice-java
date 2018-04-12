@@ -15,12 +15,6 @@ public class GameTest {
   }
 
   @Test
-  public void randomDice_generateRandomDiceNumber_int() {
-    Game testGame = new Game("Player 1");
-    assertEquals(true, testGame.randomDice() != 0);
-  }
-
-  @Test
   public void getCurrentPlayer_getPlayerName_String() {
     Game testGame = new Game("Player 1");
     assertEquals("Player 1", testGame.getCurrentPlayer());
