@@ -39,7 +39,7 @@ public class Game {
     if (input == 'r') {
       randomDice();
       addTurnScore();
-      System.out.println("Rolled dice: " + rolledDice + "\n");
+      System.out.println("\nRolled dice: " + rolledDice + "\n");
       return true;
     } else if (input == 'h') {
       if (currentPlayer.equals("Player 1")) {
@@ -51,6 +51,7 @@ public class Game {
       playerChange();
       return true;
     } else {
+      System.out.println("\nWrong input!\n");
       return false;
     }
   }
